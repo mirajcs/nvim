@@ -13,4 +13,12 @@ chatgpt.setup({
   },
 })
 
+vim.api.nvim_create_user_command("ChatGPTNew", function()
+  local status_ok, chatgpt = pcall(require, "chatgpt")
+  if not status_ok or not chatgpt then
+    vim.notify("ChatGPT.nvim not loaded", vim.log.levels.ERROR)
+    return
+  end
 
+  chatgpt.openChat()  -- This opens a new chat buffer
+end, {})

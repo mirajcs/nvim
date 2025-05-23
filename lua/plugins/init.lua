@@ -1,6 +1,6 @@
 return {
   -- Core UI
-  { "folke/tokyonight.nvim", priority = 1000 },
+  { "catppuccin/nvim", name="catppuccin", priority = 1000 },
   { "nvim-lualine/lualine.nvim" },
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
@@ -33,12 +33,11 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
-  { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
 -- LaTeX support
   { "lervag/vimtex", lazy=false },
 -- Git Integration
-{ "tpope/vim-fugitive" },                    -- Git commands inside Neovim
+{ "tpope/vim-fugitive" },   -- Git commands inside Neovim
 { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } }, -- Git signs in gutter
 --Auto compile
 {
@@ -49,5 +48,11 @@ return {
     })
   end,
 },
-}
+{
+  "L3MON4D3/LuaSnip",
+  config = function()
+    require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/config/snippets"}) -- loads friendly-snippets
+  end,
+},
+} 
 
